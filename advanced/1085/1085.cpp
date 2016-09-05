@@ -1,12 +1,20 @@
-# 题意
-对于序列a，若max(a) <= min(a)*p，则称a为完美序列
-
-先给定一个数列，从中任意取数组成序列，求所能组成的最长的完美序列的长度
-
-# 解法
-首先贪心的想，对于完美序列，若确定了最小的数和最大的数，那么介于两者之间的数越多越好（这样长度才能尽可能大，所以全取最好）
-
-具体做法：
-
-先排序，然后遍历数组，对于每个a[i]，二分查找最后一个使得a[j] <= a[i]*p的位置j，对于所有的(i,j)，最大的j-i+1即可
-复杂度：O(nlog(n))
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+const int N = 1e5+10;
+ll a[N];
+int main() {
+	int n, ans = 0;
+	ll p;
+	scanf("%d%lld", &n, &p);
+	for (int i = 0; i < n; i++) {
+		scanf("%lld", &a[i]);
+	}
+	sort(a, a+n);
+	for (int i = 0; i < n; i++) {
+		int l = upper_bound(a, a+n, a[i]*p) - a;
+		ans = max(ans, l-i);
+	}
+	printf("%d\n", ans);
+	return 0;
+}

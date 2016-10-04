@@ -29,9 +29,6 @@ int main() {
 		}
 		ans++;
 	}
-	for (auto i: s) {
-		printf("%d\n", i);
-	}
 	printf("%d\n", ans);
 	return 0;
 }

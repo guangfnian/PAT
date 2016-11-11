@@ -2,7 +2,7 @@
 using namespace std;
 const int N = 1100;
 int fa[N], cnt[N];
-bitset<N> p[N], e;
+bitset<N> p[N];
 int find(int x) {
 	return x == fa[x] ? fa[x]: fa[x] = find(fa[x]);
 }
@@ -22,7 +22,7 @@ int main() {
 	}
 	for (int i = 0; i < n; i++) {
 		for (int j = i+1; j < n; j++) {
-			if ((p[i] & p[j]) != e) {
+			if ((p[i] & p[j]).any()) {
 				int x = find(i), y = find(j);
 				if (x != y) {
 					fa[x] = y;
@@ -46,4 +46,3 @@ int main() {
 	puts("");
 	return 0;
 }
-

@@ -1,8 +1,12 @@
 #include <bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/hash_policy.hpp>
+using namespace __gnu_pbds;
 using namespace std;
 const int N = 1e4+5;
 vector<int> v[N];
-unordered_set<int> ans;
+//unordered_set<int> ans;
+cc_hash_table<int, null_type> ans;
 bool vis[N];
 int _mx = 0;
 
